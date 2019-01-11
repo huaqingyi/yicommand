@@ -1,0 +1,38 @@
+{
+  "name": "yicommand",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huaqingyi/yicommand.git"
+  },
+  "keywords": [
+    "commonand",
+    "decorator"
+  ],
+  "author": "huaqingyi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huaqingyi/yicommand/issues"
+  },
+  "homepage": "https://github.com/huaqingyi/yicommand#readme",
+  "devDependencies": {
+    "@types/figlet": "^1.2.0",
+    "@types/gulp-sourcemaps": "0.0.32",
+    "@types/lodash": "^4.14.119",
+    "@types/merge2": "^1.1.4",
+    "deploy-gulp": "^1.0.4",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-typescript": "^5.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "merge2": "^1.2.3"
+  },
+  "dependencies": {
+    "figlet": "^1.2.1",
+    "lodash": "^4.17.11"
+  }
+}
