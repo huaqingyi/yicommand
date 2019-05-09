@@ -7,7 +7,7 @@ export interface CommandOptions {
 }
 
 export function Command(config?: CommandOptions) {
-    return function (constructor: Function, key?: string) {
+    return function (constructor: any, key?: string) {
         StoreCore.register().command(constructor, config);
     }
 }

@@ -5,8 +5,10 @@ export declare class StoreCore {
     static register(): StoreCore;
     private tasksOpt;
     private execsOpt;
+    private argsOpt;
     constructor();
-    command(constructor: Function, context?: CommandOptions): Promise<void[]>;
+    command(constructor: any, context?: CommandOptions): Promise<void[]>;
     execs(method: string, context: string): void;
     tasks(method: string, context?: TaskOptions): void;
+    args(methods: string, context: string): void;
 }

@@ -3,4 +3,4 @@ export interface CommandOptions {
     color?: string;
     version: string;
 }
-export declare function Command(config?: CommandOptions): (constructor: Function, key?: string | undefined) => void;
+export declare function Command(config?: CommandOptions): (constructor: any, key?: string | undefined) => void;
