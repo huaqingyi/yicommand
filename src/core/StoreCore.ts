@@ -27,9 +27,11 @@ export class StoreCore {
     }
 
     private tasksOpt: { [key: string]: TaskOptions | undefined };
+    private execsOpt: { [key: string]: string };
 
     constructor() {
         this.tasksOpt = {};
+        this.execsOpt = {};
     }
 
     command(constructor: Function, context?: CommandOptions) {
@@ -51,6 +53,10 @@ export class StoreCore {
             }
         }).then(resp => {
             program.version(c.version);
+            return _.map(this.execsOpt, (v, k) => {
+                program.command(k);
+            });
+        }).then(resp => {
             return _.map(this.tasksOpt, (opt, key) => {
                 let opts = '';
                 if (opt && opt.option) {
@@ -62,12 +68,20 @@ export class StoreCore {
                 program.option(option, opt && opt.explain);
             });
         }).then(resp => {
+        }).then(resp => {
             program.parse(process.argv);
             let mode = new (<any>constructor);
-            return _.map(this.tasksOpt, (opt, key) => {
+            _.map(this.tasksOpt, (opt, key) => {
                 if (program[key]) mode[key](program[key]);
             });
+            return _.map(this.execsOpt, (v, k) => {
+                program.action(mode[v].bind(mode));
+            });
         });
+    }
+
+    execs(method: string, context: string) {
+        this.execsOpt[method] = context;
     }
 
     tasks(method: string, context?: TaskOptions) {

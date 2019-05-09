@@ -1,5 +1,4 @@
 import { StoreCore } from './../core/StoreCore';
-import _ from 'lodash'
 
 export interface CommandOptions {
     context?: string;

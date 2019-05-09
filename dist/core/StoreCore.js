@@ -30,6 +30,7 @@ colors_1.default.setTheme({
 var StoreCore = /** @class */ (function () {
     function StoreCore() {
         this.tasksOpt = {};
+        this.execsOpt = {};
     }
     StoreCore.register = function () {
         if (!StoreCore._this)
@@ -59,6 +60,10 @@ var StoreCore = /** @class */ (function () {
             }
         }).then(function (resp) {
             commander_1.default.version(c.version);
+            return lodash_1.default.map(_this_1.execsOpt, function (v, k) {
+                commander_1.default.command(k);
+            });
+        }).then(function (resp) {
             return lodash_1.default.map(_this_1.tasksOpt, function (opt, key) {
                 var opts = '';
                 if (opt && opt.option) {
@@ -73,13 +78,20 @@ var StoreCore = /** @class */ (function () {
                 commander_1.default.option(option, opt && opt.explain);
             });
         }).then(function (resp) {
+        }).then(function (resp) {
             commander_1.default.parse(process.argv);
             var mode = new constructor;
-            return lodash_1.default.map(_this_1.tasksOpt, function (opt, key) {
+            lodash_1.default.map(_this_1.tasksOpt, function (opt, key) {
                 if (commander_1.default[key])
                     mode[key](commander_1.default[key]);
             });
+            return lodash_1.default.map(_this_1.execsOpt, function (v, k) {
+                commander_1.default.action(mode[v].bind(mode));
+            });
         });
+    };
+    StoreCore.prototype.execs = function (method, context) {
+        this.execsOpt[method] = context;
     };
     StoreCore.prototype.tasks = function (method, context) {
         var _a;
