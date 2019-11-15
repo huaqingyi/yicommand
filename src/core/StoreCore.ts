@@ -60,7 +60,7 @@ export class StoreCore {
         await _.map(this.execsOpt, (v, k) => {
             program.command(v).action(mode[k].bind(this));
         });
-        
+
         await _.map(this.argsOpt, (v, k) => {
             program.arguments(v).action(mode[k].bind(this));
         });
@@ -73,7 +73,7 @@ export class StoreCore {
         await program.parse(process.argv);
 
         return await _.map(this.tasksOpt, (opt, key) => {
-            if (program[key]) mode[key](program[key]);
+            if (program[key]) mode[key].apply(this, [program[key]]);
         });
     }
 
