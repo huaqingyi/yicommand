@@ -76,7 +76,6 @@ var StoreCore = /** @class */ (function () {
     StoreCore.prototype.command = function (constructor, context) {
         return __awaiter(this, void 0, void 0, function () {
             var c, mode;
-            var _this_1 = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -107,12 +106,24 @@ var StoreCore = /** @class */ (function () {
                     case 2:
                         _a.sent();
                         return [4 /*yield*/, lodash_1.default.map(this.execsOpt, function (v, k) {
-                                commander_1.default.command(v).action(mode[k].bind(_this_1));
+                                commander_1.default.command(v).action(function () {
+                                    var args = [];
+                                    for (var _i = 0; _i < arguments.length; _i++) {
+                                        args[_i] = arguments[_i];
+                                    }
+                                    return mode[k].apply(mode, args);
+                                });
                             })];
                     case 3:
                         _a.sent();
                         return [4 /*yield*/, lodash_1.default.map(this.argsOpt, function (v, k) {
-                                commander_1.default.arguments(v).action(mode[k].bind(_this_1));
+                                commander_1.default.arguments(v).action(function () {
+                                    var args = [];
+                                    for (var _i = 0; _i < arguments.length; _i++) {
+                                        args[_i] = arguments[_i];
+                                    }
+                                    return mode[k].apply(mode, args);
+                                });
                             })];
                     case 4:
                         _a.sent();
@@ -127,7 +138,7 @@ var StoreCore = /** @class */ (function () {
                         _a.sent();
                         return [4 /*yield*/, lodash_1.default.map(this.tasksOpt, function (opt, key) {
                                 if (commander_1.default[key])
-                                    mode[key](commander_1.default[key]);
+                                    mode[key].apply(mode, [commander_1.default[key]]);
                             })];
                     case 7: return [2 /*return*/, _a.sent()];
                 }

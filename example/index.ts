@@ -5,9 +5,16 @@ import { Command, Task, Execute } from '../src';
     version: '1.0.0'
 })
 export class TestCommand {
+
+    private name:string;
+
+    constructor(){
+        this.name = '111';
+    }
     
     @Execute('conn [file]')
     public conn(){
+        console.log(this.name);
         console.log(1);
     }
 
