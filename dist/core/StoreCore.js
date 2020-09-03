@@ -106,13 +106,24 @@ var StoreCore = /** @class */ (function () {
                     case 2:
                         _a.sent();
                         return [4 /*yield*/, lodash_1.default.map(this.execsOpt, function (v, k) {
-                                commander_1.default.command(v).action(function () {
-                                    var args = [];
-                                    for (var _i = 0; _i < arguments.length; _i++) {
-                                        args[_i] = arguments[_i];
-                                    }
-                                    return mode[k].apply(mode, args);
-                                });
+                                if (v.description) {
+                                    commander_1.default.command(v.context).description(v.description).action(function () {
+                                        var args = [];
+                                        for (var _i = 0; _i < arguments.length; _i++) {
+                                            args[_i] = arguments[_i];
+                                        }
+                                        return mode[k].apply(mode, args);
+                                    });
+                                }
+                                else {
+                                    commander_1.default.command(v.context).action(function () {
+                                        var args = [];
+                                        for (var _i = 0; _i < arguments.length; _i++) {
+                                            args[_i] = arguments[_i];
+                                        }
+                                        return mode[k].apply(mode, args);
+                                    });
+                                }
                             })];
                     case 3:
                         _a.sent();
@@ -145,8 +156,8 @@ var StoreCore = /** @class */ (function () {
             });
         });
     };
-    StoreCore.prototype.execs = function (method, context) {
-        this.execsOpt[method] = context;
+    StoreCore.prototype.execs = function (method, context, description) {
+        this.execsOpt[method] = { context: context, description: description };
     };
     StoreCore.prototype.tasks = function (method, context) {
         var _a;

@@ -8,7 +8,7 @@ export declare class StoreCore {
     private argsOpt;
     constructor();
     command(constructor: any, context?: CommandOptions): Promise<void[]>;
-    execs(method: string, context: string): void;
+    execs(method: string, context: string, description?: string): void;
     tasks(method: string, context?: TaskOptions): void;
     args(methods: string, context: string): void;
 }

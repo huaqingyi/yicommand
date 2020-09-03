@@ -27,7 +27,7 @@ export class StoreCore {
     }
 
     private tasksOpt: { [key: string]: TaskOptions | undefined };
-    private execsOpt: { [key: string]: string };
+    private execsOpt: { [key: string]: { context: string; description?: string } };
     private argsOpt: { [key: string]: string };
 
     constructor() {
@@ -58,7 +58,11 @@ export class StoreCore {
 
         await program.version(c.version);
         await _.map(this.execsOpt, (v, k) => {
-            program.command(v).action((...args: any[]) => mode[k].apply(mode, args));
+            if (v.description) {
+                program.command(v.context).description(v.description).action((...args: any[]) => mode[k].apply(mode, args));
+            } else {
+                program.command(v.context).action((...args: any[]) => mode[k].apply(mode, args));
+            }
         });
 
         await _.map(this.argsOpt, (v, k) => {
@@ -77,8 +81,8 @@ export class StoreCore {
         });
     }
 
-    execs(method: string, context: string) {
-        this.execsOpt[method] = context;
+    execs(method: string, context: string, description?: string) {
+        this.execsOpt[method] = { context, description };
     }
 
     tasks(method: string, context?: TaskOptions) {

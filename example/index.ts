@@ -12,7 +12,7 @@ export class TestCommand {
         this.name = '111';
     }
     
-    @Execute('conn [file]')
+    @Execute('conn [file]', '链接文件资源 conn 文件地址')
     public conn(){
         console.log(this.name);
         console.log(1);
