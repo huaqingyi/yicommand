@@ -7,6 +7,7 @@ export type ContextRT = string | Promise<string>;
 export interface CommanderOption extends Options {
     context: ContextRT | ((...props: any[]) => ContextRT);
     version: ContextRT | ((...props: any[]) => ContextRT);
+    color?: any;
 }
 
 export function Commander<Y extends CoreClass<YCommander>>(target: Y): Y;
