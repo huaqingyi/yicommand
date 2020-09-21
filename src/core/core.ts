@@ -1,6 +1,7 @@
 import { isFunction, map } from 'lodash';
 import { CommanderOption, YCommander } from '../decorators/command';
 import commander, { command, createCommand } from 'commander';
+import { textSync } from 'figlet';
 
 // tslint:disable-next-line:interface-name
 export interface CoreImpl {
@@ -96,6 +97,11 @@ export class DICore {
     }
 
     public async bootstrap(config: CommanderOption, target: CoreClass<YCommander>) {
+
+        let text = await config.context;
+        if (isFunction(config.context)) { text = await config.context(); }
+        await textSync(text as string, config);
+
         const v = isFunction(config.version) ? await config.version() : await config.version;
         const program = createCommand();
         program.version(v);
