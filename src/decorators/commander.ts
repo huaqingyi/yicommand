@@ -1,5 +1,5 @@
 import { CommanderCore, CoreClass, DI } from '../core';
-import { textSync, Options } from 'figlet';
+import { Options } from 'figlet';
 
 export type ContextRT = string | Promise<string>;
 

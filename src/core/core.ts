@@ -1,5 +1,5 @@
 import { isFunction, map } from 'lodash';
-import { CommanderOption, YCommander } from '../decorators/command';
+import { CommanderOption, YCommander } from '../decorators/commander';
 import commander, { command, createCommand } from 'commander';
 import colors from 'colors';
 import { textSync } from 'figlet';

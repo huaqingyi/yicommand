@@ -1,1 +1,0 @@
-{"version":3,"sources":["decorators/index.ts"],"names":[],"mappings":";;;AAAA,mDAAyB;AACzB,mDAAyB;AACzB,oDAA0B","file":"../../decorators/index.js","sourcesContent":["export * from './option';\nexport * from './action';\nexport * from './command';\n"]}

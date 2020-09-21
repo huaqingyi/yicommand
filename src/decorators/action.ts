@@ -1,5 +1,5 @@
 import { CoreClass } from '../core';
-import { YCommander } from './command';
+import { YCommander } from './commander';
 
 export function Action(
     target: YCommander, attrKey: string, descriptor: PropertyDescriptor
