@@ -4,6 +4,7 @@ export declare type ContextRT = string | Promise<string>;
 export interface CommanderOption extends Options {
     context: ContextRT | ((...props: any[]) => ContextRT);
     version: ContextRT | ((...props: any[]) => ContextRT);
+    color?: any;
 }
 export declare function Commander<Y extends CoreClass<YCommander>>(target: Y): Y;
 export declare function Commander(config: CommanderOption): <Y extends CoreClass<YCommander>>(target: Y) => Y;

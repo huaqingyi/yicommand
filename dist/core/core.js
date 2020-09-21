@@ -3,6 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var lodash_1 = require("lodash");
 var commander_1 = require("commander");
+var colors_1 = tslib_1.__importDefault(require("colors"));
+var figlet_1 = require("figlet");
 var CommanderCore = (function () {
     function CommanderCore() {
     }
@@ -109,29 +111,42 @@ var DICore = (function () {
     };
     DICore.prototype.bootstrap = function (config, target) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
-            var v, _a, program;
-            return tslib_1.__generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        if (!lodash_1.isFunction(config.version)) return [3, 2];
-                        return [4, config.version()];
+            var text, _a, _b, _c, _d, v, _e, program;
+            return tslib_1.__generator(this, function (_f) {
+                switch (_f.label) {
+                    case 0: return [4, config.context];
                     case 1:
-                        _a = _b.sent();
-                        return [3, 4];
-                    case 2: return [4, config.version];
+                        text = _f.sent();
+                        if (!lodash_1.isFunction(config.context)) return [3, 3];
+                        return [4, config.context()];
+                    case 2:
+                        text = _f.sent();
+                        _f.label = 3;
                     case 3:
-                        _a = _b.sent();
-                        _b.label = 4;
+                        _b = (_a = console).log;
+                        _d = (_c = colors_1.default)[config.color || 'red'];
+                        return [4, figlet_1.textSync(text, config)];
                     case 4:
-                        v = _a;
+                        _b.apply(_a, [_d.apply(_c, [_f.sent()])]);
+                        if (!lodash_1.isFunction(config.version)) return [3, 6];
+                        return [4, config.version()];
+                    case 5:
+                        _e = _f.sent();
+                        return [3, 8];
+                    case 6: return [4, config.version];
+                    case 7:
+                        _e = _f.sent();
+                        _f.label = 8;
+                    case 8:
+                        v = _e;
                         program = commander_1.createCommand();
                         program.version(v);
                         return [4, this.mappingCommander(target, program)];
-                    case 5:
-                        _b.sent();
+                    case 9:
+                        _f.sent();
                         return [4, program.parse(process.argv)];
-                    case 6:
-                        _b.sent();
+                    case 10:
+                        _f.sent();
                         return [2];
                 }
             });
