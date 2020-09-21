@@ -1,39 +1,45 @@
 {
-  "name": "yicommand",
-  "version": "1.0.7",
-  "description": "",
-  "main": "dist/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/huaqingyi/yicommand.git"
-  },
-  "keywords": [
-    "commonand",
-    "decorator"
-  ],
-  "author": "huaqingyi",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/huaqingyi/yicommand/issues"
-  },
-  "homepage": "https://github.com/huaqingyi/yicommand#readme",
-  "devDependencies": {
-    "@types/figlet": "^1.2.0",
-    "@types/gulp-sourcemaps": "0.0.32",
-    "@types/lodash": "^4.14.119",
-    "@types/merge2": "^1.1.4",
-    "deploy-gulp": "^1.0.4",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-typescript": "^5.0.0",
-    "html-webpack-plugin": "^3.2.0",
-    "merge2": "^1.2.3"
-  },
-  "dependencies": {
-    "commander": "^2.20.0",
-    "figlet": "^1.2.1",
-    "lodash": "^4.17.11"
-  }
+    "name": "yicommand",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/index.js",
+    "dependencies": {
+        "commander": "^6.1.0",
+        "figlet": "^1.5.0",
+        "lodash": "^4.17.20",
+        "reflect-metadata": "^0.1.13"
+    },
+    "devDependencies": {
+        "@types/commander": "^2.12.2",
+        "@types/figlet": "^1.2.0",
+        "@types/fs-extra": "^8.0.1",
+        "@types/gulp": "^4.0.6",
+        "@types/lodash": "^4.14.161",
+        "@types/shelljs": "^0.8.6",
+        "fs-extra": "^8.1.0",
+        "gulp": "^4.0.2",
+        "gyi": "^1.0.3",
+        "shelljs": "^0.8.3"
+    },
+    "scripts": {
+        "test": "ts-node test/index.ts",
+        "build": "gulp build",
+        "pub": "gulp publish",
+        "update:pack": "gulp update",
+        "start": "gulp watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/huaqingyi/yicommand.git"
+    },
+    "keywords": [
+        "commonand",
+        "decorator"
+    ],
+    "author": "huaqingyi",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/huaqingyi/yicommand/issues"
+    },
+    "homepage": "https://github.com/huaqingyi/yicommand#readme"
 }

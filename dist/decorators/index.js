@@ -1,11 +1,8 @@
 "use strict";
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(require("./Command"));
-__export(require("./Task"));
-__export(require("./Execute"));
-__export(require("./Arguments"));
+var tslib_1 = require("tslib");
+tslib_1.__exportStar(require("./option"), exports);
+tslib_1.__exportStar(require("./action"), exports);
+tslib_1.__exportStar(require("./command"), exports);
 
 //# sourceMappingURL=../sourcemaps/decorators/index.js.map

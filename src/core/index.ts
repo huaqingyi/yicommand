@@ -1,1 +1,1 @@
-export * from './StoreCore'
+export * from './core';
